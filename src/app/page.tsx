@@ -1,10 +1,10 @@
 import { Footer } from "@/components/layout/footer";
 import { Navbar } from "@/components/layout/navbar";
+import { Playground } from "@/components/playground/playground-section";
 import { About } from "@/components/sections/about";
 import { Contact } from "@/components/sections/contact";
 import { FeaturedProjects } from "@/components/sections/featured-projects";
 import { Hero } from "@/components/sections/hero";
-import { Playground } from "@/components/sections/playground";
 import { TechStack } from "@/components/sections/tech-stack";
 import { WorkExperience } from "@/components/sections/work-experience";
 

@@ -34,6 +34,7 @@ Follow the existing project structure:
 - `src/app/`: App Router pages, layouts, metadata, and global styles.
 - `src/components/layout/`: Navbar, footer, and layout components.
 - `src/components/sections/`: Portfolio page sections.
+- `src/components/playground/`: Playground section, shared controls, and one component file per demo.
 - `src/components/shared/`: Reusable UI components.
 - `src/components/providers/`: React context providers.
 - `src/data/`: Portfolio content and static data.

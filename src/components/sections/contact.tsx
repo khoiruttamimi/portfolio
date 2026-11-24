@@ -1,20 +1,51 @@
-import { BriefcaseBusiness, CodeXml, Mail } from "lucide-react";
-import { profile } from "@/data/portfolio";
+import { BriefcaseBusiness, CodeXml, Mail } from 'lucide-react';
+import { profile } from '@/data/portfolio';
+
+const email = profile.email?.trim();
+const emailHref = email ? `mailto:${email}` : undefined;
+const contactLinks = [
+  { label: 'LinkedIn', href: profile.linkedin?.trim(), icon: BriefcaseBusiness },
+  { label: 'GitHub', href: profile.github?.trim(), icon: CodeXml },
+  { label: 'Email', href: emailHref, icon: Mail },
+].filter(({ href }) => href);
 
 export function Contact() {
   return (
     <section id="contact" className="section-band" aria-labelledby="contact-title" tabIndex={-1}>
       <div className="site-container">
         <div className="contact-panel">
-          <div className="section-heading mb-0">
-            <h2 id="contact-title">Get in touch</h2>
-            <p><a className="contact-email" href={`mailto:${profile.email}`}>{profile.email}</a></p>
-            <ul className="mt-5 flex flex-wrap gap-2">
-              <li><a className="button button-secondary" href={profile.github}><CodeXml size={16} aria-hidden="true" /> GitHub</a></li>
-              <li><a className="button button-secondary" href={profile.linkedin}><BriefcaseBusiness size={16} aria-hidden="true" /> LinkedIn</a></li>
-            </ul>
+          <div className="contact-main">
+            <div className="grid justify-items-start">
+              <p className="eyebrow contact-eyebrow">OPEN TO OPPORTUNITIES</p>
+              <h2 id="contact-title" className="contact-title">
+                Have Something in Mind?{' '}
+                <span className="block text-accent">Let&apos;s Talk.</span>
+              </h2>
+              <p className="contact-description">
+                Whether it&apos;s a new opportunity, an interesting project, or just a conversation about frontend development,
+                I&apos;d love to hear from you.
+              </p>
+              {emailHref && (
+                <a className="button button-primary mt-6" href={emailHref}>
+                  <Mail size={18} aria-hidden="true" /> Get in Touch
+                </a>
+              )}
+            </div>
+            <div className="contact-art hidden lg:grid" aria-hidden="true">
+              <span className="contact-mark"><Mail size={42} strokeWidth={1.5} /></span>
+            </div>
           </div>
-          <span className="contact-mark hidden sm:grid"><Mail size={32} strokeWidth={1.6} aria-hidden="true" /></span>
+          {contactLinks.length > 0 && (
+            <ul className="contact-links" aria-label="Contact links">
+              {contactLinks.map(({ label, href, icon: Icon }) => (
+                <li key={label}>
+                  <a className="contact-link" href={href}>
+                    <Icon size={18} aria-hidden="true" /> {label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       </div>
     </section>
