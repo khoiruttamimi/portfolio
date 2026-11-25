@@ -163,13 +163,76 @@ export const experience = [
   },
 ] as const;
 
-export const techStack = [
-  { name: 'Next.js', role: 'Framework', mark: 'N' },
-  { name: 'React', role: 'UI library', mark: 'Re' },
-  { name: 'TypeScript', role: 'Language', mark: 'TS' },
-  { name: 'JavaScript', role: 'Language', mark: 'JS' },
-  { name: 'Vue.js', role: 'Framework', mark: 'Vu' },
-  { name: 'AngularJS', role: 'Framework', mark: 'Ng' },
-  { name: 'Ant Design', role: 'Component library', mark: 'AD' },
-  { name: 'TanStack Query', role: 'Data fetching', mark: 'TQ' },
-] as const;
+type Technology = {
+  name: string;
+  primary?: boolean;
+} & (
+  | { logo: string; mark?: never }
+  | { logo?: never; mark: string }
+);
+
+type TechnologyCategory = {
+  id: string;
+  title: string;
+  items: readonly Technology[];
+};
+
+const nextJs = { name: 'Next.js', logo: 'nextjs', primary: true } as const;
+
+export const techStack: readonly TechnologyCategory[] = [
+  {
+    id: 'frontend',
+    title: 'Frontend Technologies',
+    items: [
+      { name: 'React', logo: 'react', primary: true },
+      nextJs,
+      { name: 'Vue.js', logo: 'vuejs' },
+      { name: 'TypeScript', logo: 'typescript', primary: true },
+      { name: 'JavaScript', logo: 'javascript' },
+    ],
+  },
+  {
+    id: 'backend',
+    title: 'Backend Technologies',
+    items: [
+      nextJs,
+      { name: 'Go', logo: 'go' },
+      { name: 'Laravel', logo: 'laravel' },
+    ],
+  },
+  {
+    id: 'styling',
+    title: 'UI & Styling',
+    items: [
+      { name: 'Ant Design', logo: 'antdesign' },
+      { name: 'Tailwind CSS', logo: 'tailwindcss' },
+      { name: 'SCSS', logo: 'sass' },
+      { name: 'CSS', logo: 'css' },
+      { name: 'Bootstrap', logo: 'bootstrap' },
+      { name: 'Material UI (MUI)', logo: 'materialui' },
+      { name: 'CoreUI', logo: 'coreui' },
+    ],
+  },
+  {
+    id: 'data',
+    title: 'State & Data',
+    items: [
+      { name: 'TanStack Query', logo: 'tanstack-query' },
+      { name: 'REST API', mark: 'API' },
+      { name: 'PostgreSQL', logo: 'postgresql' },
+      { name: 'Drizzle ORM', logo: 'drizzle' },
+    ],
+  },
+  {
+    id: 'tools',
+    title: 'Development Tools & AI',
+    items: [
+      { name: 'Git', logo: 'git' },
+      { name: 'Visual Studio Code', logo: 'vscode' },
+      { name: 'Postman', logo: 'postman' },
+      { name: 'Figma', logo: 'figma' },
+      { name: 'Vercel', logo: 'vercel' },
+      { name: 'OpenAI Codex', logo: 'codex' },
+    ],
+  },
+];

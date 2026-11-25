@@ -30,7 +30,7 @@ export function About() {
                 width={1095}
                 height={1436}
                 sizes="(min-width: 48rem) 16rem, 12rem"
-                className="h-auto w-full rounded-lg"
+                className="about-photo-image"
               />
             ) : (
               <div className="about-photo-fallback" aria-hidden="true"><UserRound size={42} strokeWidth={1.5} /></div>
