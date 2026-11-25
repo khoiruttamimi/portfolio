@@ -61,76 +61,179 @@ export const education = {
   period: '2014–2018',
 };
 
+export const projectCategories = ['Amartha', 'TwisCode', 'Haryono Tours & Travel', 'Freelance', 'Personal'] as const;
+
 export type FeaturedProject = {
   id: string;
   title: string;
-  description: string;
+  category: (typeof projectCategories)[number];
+  role?: string;
+  description?: string;
+  overview?: string;
   technologies: readonly string[];
-  highlights: readonly string[];
+  highlights?: readonly string[];
   repository?: string;
   liveApp?: { url: string; label: string };
-} & ({ type: 'Personal Project'; company?: never } | { type: 'Professional Project'; company: string });
+};
 
-export const projects = [
+export type ProjectSummary = Pick<
+  FeaturedProject,
+  'id' | 'title' | 'category' | 'role' | 'description' | 'technologies' | 'repository' | 'liveApp'
+>;
+
+export const projects: readonly FeaturedProject[] = [
   {
-    id: 'my-kasir',
-    title: 'My Kasir — Point of Sale System',
-    type: 'Personal Project',
-    description: 'A web-based point-of-sale application designed to simplify product management and sales transactions.',
-    technologies: ['Next.js', 'React', 'TypeScript', 'Ant Design', 'PostgreSQL', 'Drizzle ORM'],
-    highlights: ['Product management', 'Sales transactions', 'Authentication', 'Invoice generation', 'Barcode support'],
-    repository: 'https://github.com/khoiruttamimi/my-kasir',
-    liveApp: { url: 'https://my-kasir-lemon.vercel.app', label: 'Live app (sign-in required)' },
+    id: 'mis',
+    title: 'Management Information System (MIS)',
+    category: 'Amartha',
+    description:
+      'An enterprise management platform designed to support internal business operations, data management, and reporting. The system provides complex data tables, advanced filtering, forms, and dashboards to help teams manage operational workflows efficiently.',
+    overview: 'The platform supports complex operational workflows through forms, data tables, filtering, and analytics and reporting dashboards.',
+    technologies: ['Next.js', 'React', 'TypeScript', 'Ant Design'],
+    highlights: [
+      'Modernized the legacy frontend and improved its maintainability.',
+      'Built reusable UI components, complex forms, and data tables with advanced filtering.',
+      'Developed analytics and reporting dashboards.',
+    ],
   },
   {
     id: 'funds',
     title: 'FunDS — Design System',
-    type: 'Professional Project',
-    company: 'Amartha',
+    category: 'Amartha',
     description:
-      'A reusable UI component library focused on consistency, maintainability, and scalability across enterprise applications.',
+      'A reusable design system built to provide consistent user interfaces across enterprise applications. It includes customizable UI components, form controls, and interactive components such as Calendar and DateInput, helping development teams build maintainable applications.',
+    overview: 'The UI component library focuses on consistency, maintainability, and reuse as enterprise applications grow.',
     technologies: ['React', 'TypeScript', 'SCSS'],
     highlights: [
-      'Reusable UI components',
-      'Calendar and DateInput components',
-      'Component API design',
-      'Technical documentation',
-      'Component maintainability',
-    ],
-  },
-  {
-    id: 'mis',
-    title: 'Management Information System (MIS)',
-    type: 'Professional Project',
-    company: 'Amartha',
-    description:
-      'An internal enterprise platform supporting operational workflows, data management, and complex business processes.',
-    technologies: ['Next.js', 'React', 'TypeScript', 'Ant Design', 'FunDS Design System'],
-    highlights: [
-      'Legacy application modernization',
-      'Complex forms and data tables',
-      'Advanced filtering',
-      'Analytics and reporting dashboards',
-      'Reusable UI components',
-      'Maintainable frontend architecture',
+      'Developed reusable UI components, including Calendar and DateInput.',
+      'Designed component APIs and wrote technical documentation.',
+      'Improved component maintainability.',
     ],
   },
   {
     id: 'mobile-webview',
     title: 'Mobile WebView Applications',
-    type: 'Professional Project',
-    company: 'Amartha',
+    category: 'Amartha',
     description:
-      'Mobile-optimized web applications built with Next.js and designed to run within native mobile applications through WebView integration.',
-    technologies: ['Next.js', 'TypeScript', 'FunDS Design System'],
+      'Mobile-optimized web applications designed to run within native mobile apps through WebView integration. These applications provide responsive interfaces and connected experiences between mobile applications and web-based services.',
+    overview: 'The Next.js applications use WebView integration to deliver consistent UI behavior across mobile web experiences.',
+    technologies: ['Next.js'],
     highlights: [
-      'Responsive mobile interfaces',
-      'Reusable frontend components',
-      'Backend API integration',
-      'Consistent UI behavior across mobile web experiences',
+      'Built responsive mobile interfaces and reusable frontend components.',
+      'Integrated the frontend with backend APIs.',
     ],
   },
-] as const satisfies readonly FeaturedProject[];
+  {
+    id: 'ifm',
+    title: 'IFM — Internal Management System',
+    category: 'TwisCode',
+    description:
+      'An internal management application designed to support employee administration and daily business operations. The platform provides web-based interfaces for organizing internal workflows and managing operational activities.',
+    technologies: ['Laravel', 'Tailwind CSS', 'Vanilla JavaScript'],
+    highlights: ['Developed and maintained the frontend interfaces.'],
+  },
+  {
+    id: 'hyperbike',
+    title: 'Hyperbike — Logistics & Delivery Platform',
+    category: 'TwisCode',
+    description:
+      'A logistics and delivery platform designed to support package shipping and delivery operations. The application facilitates shipment management and logistics workflows, helping organize the process of managing delivery services.',
+    technologies: ['Next.js', 'Tailwind CSS'],
+    highlights: ['Contributed to frontend development.'],
+  },
+  {
+    id: 'texkleen',
+    title: 'Texkleen — Laundry Operations Management',
+    category: 'TwisCode',
+    description:
+      'A laundry operations management platform designed to support commercial laundry services. The system helps organize laundry workflows, order management, delivery coordination, and operational reporting.',
+    technologies: ['Next.js', 'Ant Design', 'Bootstrap'],
+    highlights: ['Contributed to frontend development.'],
+  },
+  {
+    id: 'halobro',
+    title: 'Halobro — Omnichannel Customer Service Platform',
+    category: 'TwisCode',
+    description:
+      'An omnichannel customer service platform designed to centralize communication from multiple messaging channels. It helps customer support teams manage conversations and coordinate customer interactions through a unified interface.',
+    technologies: ['React', 'Material UI'],
+    highlights: ['Contributed to frontend development.'],
+  },
+  {
+    id: 'kami',
+    title: 'KAMI — Creator Subscription Platform',
+    category: 'TwisCode',
+    role: 'Backend Developer',
+    description:
+      'A subscription-based video platform that allows content creators to share exclusive content with their subscribers. The platform provides a seamless experience for both creators and viewers.',
+    technologies: ['Go (Golang)'],
+  },
+  {
+    id: 'internal-business-modernization',
+    title: 'Internal Business Application Modernization',
+    category: 'Haryono Tours & Travel',
+    description:
+      'A modernization project focused on improving legacy internal business applications used for daily operations. Existing PHP functionality was refactored and developed using Laravel and Vue.js to support more maintainable application architecture and business workflows.',
+    technologies: ['PHP', 'Laravel', 'Vue.js'],
+    highlights: [
+      'Migrated legacy PHP functionality to Laravel and Vue.js.',
+      'Refactored existing code and developed internal business features.',
+    ],
+  },
+  {
+    id: 'arah-muslim',
+    title: 'Arah Muslim — Admin Dashboard',
+    category: 'Freelance',
+    description:
+      'An administration dashboard developed to support Arah Muslim, an Islamic lifestyle mobile application offering services such as prayer schedules, zakat, and other Muslim-focused features. The dashboard provides interfaces for managing application-related information and operational activities.',
+    overview: 'The dashboard supports Arah Muslim, whose mobile app offers prayer schedules, zakat, and other services for Muslims.',
+    technologies: ['React', 'CoreUI'],
+    highlights: ['Developed the dashboard frontend and administration interfaces.'],
+  },
+  {
+    id: 'payment-system-dashboard',
+    title: 'Payment System Dashboard',
+    category: 'Freelance',
+    description:
+      'A web-based administration dashboard designed to support payment system management and operational workflows. The platform provides a centralized interface for organizing payment-related activities and managing system operations.',
+    technologies: ['React', 'Material UI'],
+    highlights: ['Developed the dashboard frontend and payment management interfaces.'],
+  },
+  {
+    id: 'siksorogo',
+    title: 'Siksorogo — Running Event Management',
+    category: 'Freelance',
+    description:
+      'A web application designed to support the organization and management of running events. The platform provides an interface for managing event-related activities and coordinating operational workflows.',
+    technologies: ['React', 'Vite', 'Tailwind CSS'],
+    highlights: ['Developed the frontend using React, Vite, and Tailwind CSS.'],
+  },
+  {
+    id: 'sertimedia',
+    title: 'Sertimedia — Certification Marketplace',
+    category: 'Freelance',
+    description:
+      'A certification marketplace platform consisting of a customer-facing website and an administration dashboard. The platform supports access to certification services while providing administrative interfaces for managing marketplace operations.',
+    technologies: ['React', 'Tailwind CSS', 'CoreUI'],
+    highlights: ['Developed the frontend for the marketplace website and administration dashboard.'],
+  },
+  {
+    id: 'my-kasir',
+    title: 'My Kasir — Point of Sale System',
+    category: 'Personal',
+    description:
+      'A web-based point-of-sale application designed to simplify product management, cashier operations, and sales transactions. The system includes product management, authentication, barcode scanning, transaction processing, stock updates, and invoice generation.',
+    overview: 'My Kasir brings product management, barcode scanning, sales transactions, and invoice generation into one application.',
+    technologies: ['Next.js', 'React', 'TypeScript', 'Ant Design', 'PostgreSQL', 'Drizzle ORM'],
+    highlights: [
+      'Designed the application architecture and integrated the database.',
+      'Built product management and authentication.',
+      'Implemented transaction processing, barcode scanning, and invoice generation.',
+    ],
+    repository: 'https://github.com/khoiruttamimi/my-kasir',
+    liveApp: { url: 'https://my-kasir-lemon.vercel.app', label: 'Live app (sign-in required)' },
+  },
+];
 
 export const experience = [
   {
