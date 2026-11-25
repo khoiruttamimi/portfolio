@@ -20,6 +20,12 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## Homepage SEO
+
+Set `SITE_URL` in the production build environment to the verified HTTPS origin of the portfolio, without a path, query, or fragment. On Vercel, `VERCEL_PROJECT_PRODUCTION_URL` serves as the fallback if system environment variables are enabled. Rebuild after changing the origin.
+
+The homepage remains indexable when no origin is configured. In that case, it omits the canonical URL and absolute social image tags, and the sitemap has no URL entries. With the production origin configured, the sitemap lists only the homepage, and Open Graph and Twitter share the branded `/og.png` image.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
