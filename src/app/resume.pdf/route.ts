@@ -3,7 +3,7 @@ import { join } from 'node:path';
 
 export const dynamic = 'force-static';
 
-const resumeFilename = 'resume_m_khoirut_tamimi.pdf';
+const resumeFilename = 'CV_M_Khoirut_Tamimi.pdf';
 
 export async function GET() {
   const resume = await readFile(join(process.cwd(), 'src', 'data', resumeFilename));
