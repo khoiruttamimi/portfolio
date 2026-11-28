@@ -61,7 +61,14 @@ export const education = {
   period: '2014–2018',
 };
 
-export const projectCategories = ['Amartha', 'TwisCode', 'Haryono Tours & Travel', 'Freelance', 'Personal'] as const;
+export const projectCategories = [
+  'Amartha',
+  'TwisCode',
+  'Haryono Tours & Travel',
+  'Freelance',
+  'Personal',
+  'Frontend Showcase',
+] as const;
 
 export type FeaturedProject = {
   id: string;
@@ -72,13 +79,14 @@ export type FeaturedProject = {
   overview?: string;
   technologies: readonly string[];
   highlights?: readonly string[];
+  thumbnail?: { src: string; alt: string; width: number; height: number };
   repository?: string;
-  liveApp?: { url: string; label: string };
+  liveApp?: { url: string; label: string; opensInNewTab?: boolean };
 };
 
 export type ProjectSummary = Pick<
   FeaturedProject,
-  'id' | 'title' | 'category' | 'role' | 'description' | 'technologies' | 'repository' | 'liveApp'
+  'id' | 'title' | 'category' | 'role' | 'description' | 'technologies' | 'thumbnail' | 'repository' | 'liveApp'
 >;
 
 export const projects: readonly FeaturedProject[] = [
@@ -232,6 +240,32 @@ export const projects: readonly FeaturedProject[] = [
     ],
     repository: 'https://github.com/khoiruttamimi/my-kasir',
     liveApp: { url: 'https://my-kasir-lemon.vercel.app', label: 'Live app (sign-in required)' },
+  },
+  {
+    id: 'hydra',
+    title: 'HYDRA — Product Landing Page',
+    category: 'Frontend Showcase',
+    description:
+      'A responsive product landing page for a conceptual reusable water bottle brand, with clean visuals and interactive mobile navigation. Built with vanilla TypeScript and Tailwind CSS v4, without a frontend framework.',
+    technologies: ['TypeScript', 'Tailwind CSS', 'Vite', 'HTML'],
+    highlights: [
+      'Responsive layouts for mobile, tablet, and desktop.',
+      'Interactive mobile menu, sticky header, and active navigation highlighting.',
+      'Framework-free frontend built with HTML and vanilla TypeScript.',
+      'Styled with Tailwind CSS v4.',
+    ],
+    thumbnail: {
+      src: '/images/hydra-landing-page.webp',
+      alt: 'HYDRA landing page with a large water bottle photo beside the headline “Hydration Made Beautiful”',
+      width: 1200,
+      height: 675,
+    },
+    repository: 'https://github.com/khoiruttamimi/hydra-landing-page',
+    liveApp: {
+      url: 'https://hydra-landing-page-gamma.vercel.app',
+      label: 'Live Demo',
+      opensInNewTab: true,
+    },
   },
 ];
 

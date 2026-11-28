@@ -1,13 +1,14 @@
 import { FeaturedProjectsGrid } from '@/components/sections/featured-projects-grid';
 import { projectCategories, projects } from '@/data/portfolio';
 
-const projectSummaries = projects.map(({ id, title, category, role, description, technologies, repository, liveApp }) => ({
+const projectSummaries = projects.map(({ id, title, category, role, description, technologies, thumbnail, repository, liveApp }) => ({
   id,
   title,
   category,
   role,
   description,
   technologies,
+  thumbnail,
   repository,
   liveApp,
 }));
